@@ -114,7 +114,7 @@ find_script_location() {
 
 # Check for updates by comparing local and remote versions
 check_for_updates() {
-  local remote_url="https://raw.githubusercontent.com/agzam/mx-piper/main/mxp"
+  local remote_url="https://raw.githubusercontent.com/agzam/mxp/main/mxp"
   
   echo "Checking for updates..." >&2
   
@@ -138,7 +138,7 @@ self_update() {
     die "Cannot write to $script_path. Try running with sudo or check permissions."
   fi
   
-  local remote_url="https://raw.githubusercontent.com/agzam/mx-piper/main/mxp"
+  local remote_url="https://raw.githubusercontent.com/agzam/mxp/main/mxp"
   local temp_file
   temp_file=$(mktemp)
   
