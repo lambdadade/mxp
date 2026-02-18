@@ -345,14 +345,14 @@ open_mode() {
     die "Path does not exist: $path"
   fi
   
-  # Open in Emacs (no-wait mode)
+  # Open in Emacs without raising the frame (stay on current workspace)
   if [ -d "$path" ]; then
     # Directory - open in dired
-    emacsclient -n "$path" &>/dev/null
+    emacsclient --eval "(progn (dired \"$path\") (delete-other-windows))" &>/dev/null
     echo "Opened directory in Emacs: $path"
   else
-    # File - open with find-file
-    emacsclient -n "$path" &>/dev/null
+    # File - open as current buffer
+    emacsclient --eval "(progn (find-file \"$path\") (delete-other-windows))" &>/dev/null
     echo "Opened file in Emacs: $path"
   fi
 }
